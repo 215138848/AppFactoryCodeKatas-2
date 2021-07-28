@@ -21,7 +21,7 @@ public class MyGameOfLifeTest{
 
     @Test
     public void a_FillBoardGameTest() {
-        System.out.println( "Test 1: Filling board" );
+        System.out.println( "Test 1: Filling board");
         board = gameTester.newLBoard();
         assertNotNull(board[1][2]);
         assertNotNull(board[2][3]);
@@ -32,30 +32,33 @@ public class MyGameOfLifeTest{
     }
 
     @Test
-    public void b_Neighbors(){
+    public void b_PrintBoardGameTest() {
+        System.out.println( "Test 2: Printing Board");
         board = gameTester.newLBoard();
-        System.out.println( "Test 2: Counting of neighbors" );
-        assertEquals(gameTester.neighbourCounter(board,3,2), 3);
-        System.out.println("The board has been filled\n" + gameTester.PrintBoard(board));
-        System.out.println( "position [3][2] has " + 5 + " neighbours" );
+        String map = gameTester.PrintBoard(board);
+        assertNotNull(map);
+        System.out.println("this is the board printed\n" + map);
     }
 
     @Test
-    public void c_PrintBoardGameTest() {
-        System.out.println( "Test 3: Counting of neighbors" );
+    public void c_Neighbors(){
         board = gameTester.newLBoard();
-        assertNotNull(gameTester.PrintBoard(board));
-        System.out.println("this is the board printed\n" + gameTester.PrintBoard(board));
+        System.out.println( "Test 3: Counting of neighbors");
+        int num = gameTester.neighbourCounter(board,2,2);
+        assertEquals(num, 5);
+        board [2][2] = "@";
+        System.out.println( gameTester.PrintBoard(board));
+        System.out.println( "position [2][2] = @ and has " + num + " neighbours\n" );
     }
 
     @Test
-    public void d_LifeGameTest() {
-        System.out.println( "Test 4: Executing Life" );
+    public void g_LifeGameTest() {
+        System.out.println( "Test 4: Executing Life");
         board = gameTester.newLBoard();
         String [][] originalBoard = board;
         board = gameTester.life(board);
-        assertEquals(originalBoard[3][3], board[2][3] );
-        System.out.println("Game of life is successfull\n" + gameTester.PrintBoard(originalBoard) + "\n\nGeneration 2 Board: \n" + gameTester.PrintBoard(board) );
+        assertNotEquals(originalBoard[1][2], board[1][2] );
+        System.out.println("Game of life is successful \nGeneration 1 Board: \n" + gameTester.PrintBoard(originalBoard) + "\nGeneration 2 Board: \n" + gameTester.PrintBoard(board) );
     }
 
 }
