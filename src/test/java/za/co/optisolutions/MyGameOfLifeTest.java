@@ -17,7 +17,12 @@ import za.co.optisolutions.MyGameOfLife;
 public class MyGameOfLifeTest{
 
     String [][] board = new String[5][5];
-    MyGameOfLife gameTester = new MyGameOfLife();
+    private MyGameOfLife gameTester;
+
+    @Before
+    public void setUp(){
+        this.gameTester = new MyGameOfLife();
+    }
 
     @Test
     public void a_FillBoardGameTest() {
@@ -52,7 +57,7 @@ public class MyGameOfLifeTest{
     }
 
     @Test
-    public void g_LifeGameTest() {
+    public void d_LifeGameTest() {
         System.out.println( "Test 4: Executing Life");
         board = gameTester.newLBoard();
         String [][] originalBoard = board;
