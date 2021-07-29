@@ -27,16 +27,16 @@ public class MyGameOfLife {
         System.out.println( "5: Exit" );
 
         System.out.println( "Please input the number for the game you would like to play. " );
-        int gameType = scan.nextInt();
+        String gameType = scan.next();
 
             switch (gameType) {
-                case 1: Game1Random();
+                case "1": Game1Random();
                     break;
-                case 2: GameLBoard();
+                case "2": GameLBoard();
                     break;
-                case 3: GameMBoard();
+                case "3": GameMBoard();
                     break;
-                case 4: Game4Manual();
+                case "4": Game4Manual();
                     break;
                 default:    System.out.println( "       " );
                             System.out.println( "          GAME OVER       " );
@@ -132,19 +132,11 @@ public class MyGameOfLife {
                     System.out.println( "Please enter 1 for Alive and 0 for dead?" + "\nCurrent cell is x:" + r + ", y: "+ c );
                     String temp = scan.next();
 
-                    if (temp.isEmpty()){
+                    if (temp.isEmpty() || temp.equals("0") || temp.equals(".") || temp.equals(" ") || temp.equals("00") || temp.equals("_") || temp.equals("-") || temp.equals("=")  ){
                         board[r][c] = "_";
                     }
                     else {
-                        if (temp.equals("1")){
-                            board[r][c] = "#";
-                        }
-                        if (temp.equals("0")){
-                            board[r][c] = "_";
-                        }
-                        if (!temp.equals("1") && !temp.equals("0")){
-                            board[r][c] = "#";
-                        }
+                        board[r][c] = "#";
                     }
                 }//end of c
             }//end of r
