@@ -57,8 +57,17 @@ public class MyGameOfLifeTest{
     }
 
     @Test
-    public void d_LifeGameTest() {
-        System.out.println( "Test 4: Executing Life");
+    public void d_GenNewBoardTest() {
+        System.out.println( "Test 4: Generate New Random Board");
+        board = gameTester.GenNewBoard(6,6);
+
+        assertEquals(board.length, 6 );
+        System.out.println("Random Board is successful \nGeneration 1 Board: \n" + gameTester.PrintBoard(board) );
+    }
+
+    @Test
+    public void e_LifeGameTest() {
+        System.out.println( "Test 5: Executing Life");
         board = gameTester.newLBoard();
         String [][] originalBoard = board;
         board = gameTester.life(board);
